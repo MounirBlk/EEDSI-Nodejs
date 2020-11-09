@@ -12,5 +12,5 @@ app.get('*', (req, res) => {
     res.sendFile(`index.html`, { root: www });
 });
 
-// Run serve
+// Run servee
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
