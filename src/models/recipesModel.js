@@ -1,5 +1,5 @@
-const { Schema } = require('mongoose');
 const mangoose = require('mongoose');
+const { Schema } = require('mongoose');
 
 const Recipes = new Schema({
     title: {
