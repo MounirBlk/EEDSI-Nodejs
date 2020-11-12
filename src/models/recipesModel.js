@@ -1,13 +1,17 @@
-const mangoose = require('mongoose');
+const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
 const Recipes = new Schema({
+
     title: {
         trim: true,
         index: true,
         type: String,
         required: true,
-        lowercace: true
+        lowercase: true,
+    },
+    image: {
+        type: String,
     },
     preparationTime: {
         type: Number,
@@ -17,24 +21,28 @@ const Recipes = new Schema({
         type: Number,
         required: true,
     },
-    steps: [{
+    zoubida: {
+        type: Number,
+    },
+    step: [{
         type: String,
         required: true,
     }],
     ingredients: [{
         name: {
             type: String,
-            required: true
+            required: true,
         },
         quantity: {
             type: Number,
-            required: true
+            required: true,
         },
         gramming: {
             type: String,
-            required: false
-        }
+            required: false,
+        },
     }]
 }, { timestamps: true })
 
-module.exports = mangoose.model('Recipes', Recipes);
+
+module.exports = mongoose.model('Recipes', Recipes);
