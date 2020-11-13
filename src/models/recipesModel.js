@@ -21,8 +21,13 @@ const Recipes = new Schema({
         type: Number,
         required: true,
     },
-    zoubida: {
-        type: Number,
+    link: {
+        type: String,
+    },
+    type: {
+        type: String,
+        default: 'original',
+        enum: ['original', 'daily', 'light-and-fun', 'kids', 'cocktails']
     },
     step: [{
         type: String,
@@ -35,7 +40,7 @@ const Recipes = new Schema({
         },
         quantity: {
             type: Number,
-            required: true,
+            required: false,
         },
         gramming: {
             type: String,
