@@ -6,21 +6,17 @@ module.exports.checkIngredients = async(req, res, next) => {
     const data = req.body;
     let retour = { error: true, message: 'The settings ' }
 
-    console.log(data);
-
     if (data.length === 0)
         return res.status(406).json({ error: true });
 
     for (const key of Object.keys(data)) {
-        console.log(key);
         let isOk = await Recipes.countDocuments({ 'ingredients.name': { $regex: `${key}`, $options: 'i' } });
-        if (isOk === 0) //13
+        if (isOk === 0) // 13
             retour.message += key + ', '
-
-        console.log(isOk);
     }
+
     if (retour.message.length === 13)
-        next()
+        next();
     else {
         retour.message = retour.message.slice(0, -2)
         retour.message += ' is not define'

@@ -2,6 +2,9 @@ const ingredients = require('express').Router();
 const middlewares = require('../middlewares');
 const controller = require('../controllers/ingredients');
 
+
+
+
 ingredients.post('/ingredients', middlewares.checkIngredients, controller.searchIngredients)
 
 ingredients.get('/equipement', (req, res) => {

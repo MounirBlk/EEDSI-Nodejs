@@ -1,11 +1,9 @@
 const Recipes = require('../models/recipesModel');
 
+
 module.exports.allRecipes = async(req, res) => {
 
     const listRecipes = await Recipes.find({}).exec()
-
-    // if(listRecipes)
-    // return res.status(501).json({error: true, message: 'data error'});
 
     listRecipes.map((recipes) => {
         recipes.link = undefined;

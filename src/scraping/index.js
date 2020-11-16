@@ -30,17 +30,16 @@ module.exports.allRecipes = () => {
             Recipes.deleteMany({}, (err) => console.log((err) ? err : 'The data of the recipe collection is deleted'));
 
             listRecipes.map(async(recipe) => {
-                    detailRecipe = await this.detailRecipe(recipe)
-                    recipe.ingredients = detailRecipe.ingredients;
-                    recipe.step = detailRecipe.steps;
+                detailRecipe = await this.detailRecipe(recipe)
+                recipe.ingredients = detailRecipe.ingredients;
+                recipe.step = detailRecipe.steps;
 
-                    Recipes.create(recipe);
-                })
-                // console.log(listRecipes);
+                Recipes.create(recipe);
+            })
         })
         .catch((error) => {
             // handle error
-            console.log(error);
+            // console.log(error);
         });
 }
 
@@ -65,8 +64,8 @@ module.exports.detailRecipe = (recipe) => {
 
             })
             .catch((error) => {
-                // handle error
-                console.log(error);
+                // console.log(error);
+                reject({ error: error })
             });
     })
 }
